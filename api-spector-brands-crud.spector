@@ -21,7 +21,7 @@
       "x-api-key"
     ],
     "theme": "light",
-    "zoom": 1.25
+    "zoom": 1
   },
   "mocks": [
     "mocks/86d5a908-57c8-4b91-aa65-c551f48ec712.mock.json"

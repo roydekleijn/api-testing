@@ -33,8 +33,7 @@
         "mode": "json",
         "json": "{\n  \"email\": \"customer@practicesoftwaretesting.com\",\n  \"password\": \"welcome01\"\n}"
       },
-      "postRequestScript": "const json = sp.response.json();\n\nsp.variables.set(\"access_token\", String(json.access_token));",
-      "hookType": "beforeAll"
+      "postRequestScript": "const json = sp.response.json();\n\nsp.variables.set(\"access_token\", String(json.access_token));"
     },
     "4a0aae06-bcdc-436f-b477-e4f9d89c72a8": {
       "id": "4a0aae06-bcdc-436f-b477-e4f9d89c72a8",

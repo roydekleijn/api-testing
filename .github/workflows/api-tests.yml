@@ -1,0 +1,30 @@
+name: API Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  api-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+      - run: npm install -g @testsmith/api-spector
+      # ⚠ Add these in: Settings → Secrets and variables → Actions
+      #   API_SPECTOR_MASTER_KEY
+      #   password
+      - name: Run API tests
+        run: api-spector run --workspace . --environment "test" --output results.html
+        env:
+          API_SPECTOR_MASTER_KEY: ${{ secrets.API_SPECTOR_MASTER_KEY }}
+          password: ${{ secrets.password }}
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-test-results
+          path: results.html

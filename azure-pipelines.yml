@@ -1,0 +1,19 @@
+trigger:
+  - main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: 'lts/*.x'
+    displayName: 'Use Node.js lts/*'
+  - script: npm install -g @testsmith/api-spector
+    displayName: 'Install API Spector'
+  - script: api-spector run --workspace . --output results.html
+    displayName: 'Run API tests'
+  - publish: results.html
+    artifact: api-test-results
+    displayName: 'Upload test results'
+    condition: always()

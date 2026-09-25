@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "id": "86d5a908-57c8-4b91-aa65-c551f48ec712",
+  "name": "New Mock Server",
+  "port": 3900,
+  "routes": [
+    {
+      "id": "657063ed-26ff-4a12-b567-d83af6a75b06",
+      "method": "POST",
+      "path": "/users/login",
+      "statusCode": 200,
+      "headers": {},
+      "body": "{\n  \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5wcmFjdGljZXNvZnR3YXJldGVzdGluZy5jb20vdXNlcnMvbG9naW4iLCJpYXQiOjE3OTAyNDc2OTAsImV4cCI6MTc5MDI0Nzk5MCwibmJmIjoxNzkwMjQ3NjkwLCJqdGkiOiI0WEk2d1dTRTA2c2JzeXJrIiwic3ViIjoiMDFNMzlINVEwQjBCRUsxQUhDOTFYUVRSSkgiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3Iiwicm9sZSI6InVzZXIifQ.op9TfXbRjakirI7IibdN8Hheimo6ZOTWzN2Na6E-0MI\",\n  \"token_type\": \"bearer\",\n  \"expires_in\": 300\n}"
+    }
+  ]
+}

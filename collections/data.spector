@@ -1,0 +1,51 @@
+{
+  "version": "1.0",
+  "id": "3179bd88-1fd1-4388-8574-ad61767efe36",
+  "name": "data",
+  "description": "",
+  "rootFolder": {
+    "id": "075df600-11a8-4ea2-86be-63a8c662df12",
+    "name": "root",
+    "description": "",
+    "folders": [],
+    "requestIds": [
+      "2e9356f1-4f6e-49b4-9557-618a1c0132b1"
+    ]
+  },
+  "requests": {
+    "2e9356f1-4f6e-49b4-9557-618a1c0132b1": {
+      "id": "2e9356f1-4f6e-49b4-9557-618a1c0132b1",
+      "name": "login",
+      "method": "POST",
+      "url": "https://api.practicesoftwaretesting.com/users/login",
+      "headers": [],
+      "params": [],
+      "auth": {
+        "type": "none"
+      },
+      "body": {
+        "mode": "json",
+        "json": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}"
+      }
+    }
+  },
+  "dataSet": {
+    "columns": [
+      "email",
+      "password"
+    ],
+    "rows": [
+      [
+        "customer@practicesoftwaretesting.com",
+        "welcome01"
+      ],
+      [
+        "admin@practicesoftwaretesting.com",
+        "welcome01"
+      ]
+    ]
+  },
+  "collectionVariables": {
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5wcmFjdGljZXNvZnR3YXJldGVzdGluZy5jb20vdXNlcnMvbG9naW4iLCJpYXQiOjE3OTAzMjAyNDAsImV4cCI6MTc5MDMyMDU0MCwibmJmIjoxNzkwMzIwMjQwLCJqdGkiOiJHSFlXaUxMWnhnd0NEZkZMIiwic3ViIjoiMDFNM0JOVFcySDM2VFI5NUZKODlQMEFQOVciLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3Iiwicm9sZSI6ImFkbWluIn0.c5kFxA-Exoi9toEJ0W0jNq0jMsdaoIQ3CBlKxUg_LQ8"
+  }
+}

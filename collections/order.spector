@@ -1,0 +1,137 @@
+{
+  "version": "1.0",
+  "id": "b1d218ca-c2c7-4dbb-bcff-2cda42441a02",
+  "name": "Order",
+  "description": "",
+  "rootFolder": {
+    "id": "813bc85a-93a1-449e-8740-4c99812b88f3",
+    "name": "root",
+    "description": "",
+    "folders": [],
+    "requestIds": [
+      "7229e7e0-cfe8-4b61-8d03-c0955df1adca",
+      "4a0aae06-bcdc-436f-b477-e4f9d89c72a8",
+      "ea2ce770-431c-4f49-93c4-e400974a594c",
+      "28d43006-99ad-4f64-8801-469956b88a42",
+      "99176188-1108-4eb4-bb49-9f3b2c25b3de",
+      "840ae862-a764-43de-b6d2-669a8b05437a",
+      "4dfcbec6-cd6a-4d36-8369-802abf8e0472"
+    ]
+  },
+  "requests": {
+    "7229e7e0-cfe8-4b61-8d03-c0955df1adca": {
+      "id": "7229e7e0-cfe8-4b61-8d03-c0955df1adca",
+      "name": "login",
+      "method": "POST",
+      "url": "{{baseUrl}}/users/login",
+      "headers": [],
+      "params": [],
+      "auth": {
+        "type": "none"
+      },
+      "body": {
+        "mode": "json",
+        "json": "{\n  \"email\": \"customer@practicesoftwaretesting.com\",\n  \"password\": \"welcome01\"\n}"
+      },
+      "postRequestScript": "const json = sp.response.json();\n\nsp.variables.set(\"access_token\", String(json.access_token));",
+      "hookType": "beforeAll"
+    },
+    "4a0aae06-bcdc-436f-b477-e4f9d89c72a8": {
+      "id": "4a0aae06-bcdc-436f-b477-e4f9d89c72a8",
+      "name": "get user info",
+      "method": "GET",
+      "url": "{{baseUrl}}/users/me",
+      "headers": [],
+      "params": [],
+      "auth": {
+        "type": "bearer",
+        "token": "{{access_token}}"
+      },
+      "body": {
+        "mode": "none"
+      },
+      "postRequestScript": "const json = sp.response.json();\n\nsp.test('first_name equals \"Jane\"', function() {\n  sp.expect(json.first_name).to.equal(\"Jane\");\n});\n\nsp.test('last_name equals \"Doe\"', function() {\n  sp.expect(json.last_name).to.equal(\"Doe\");\n});\n\nsp.test('address.street equals \"Test street 98\"', function() {\n  sp.expect(json.address.street).to.equal(\"Test street 98\");\n});\n\nsp.variables.set(\"userId\", String(json.id));"
+    },
+    "ea2ce770-431c-4f49-93c4-e400974a594c": {
+      "id": "ea2ce770-431c-4f49-93c4-e400974a594c",
+      "name": "get products",
+      "method": "GET",
+      "url": "{{baseUrl}}/products",
+      "headers": [],
+      "params": [],
+      "auth": {
+        "type": "none"
+      },
+      "body": {
+        "mode": "none"
+      },
+      "postRequestScript": "const json = sp.response.json();\n\nconst matches = sp.jsonPath(json, '$.data[?(@.name==\"Combination Pliers\")].id');\nsp.variables.set(\"productId\", String(matches[0] ?? ''));"
+    },
+    "28d43006-99ad-4f64-8801-469956b88a42": {
+      "id": "28d43006-99ad-4f64-8801-469956b88a42",
+      "name": "get product",
+      "method": "GET",
+      "url": "{{baseUrl}}/products/{{productId}}",
+      "headers": [],
+      "params": [],
+      "auth": {
+        "type": "none"
+      },
+      "body": {
+        "mode": "none"
+      }
+    },
+    "99176188-1108-4eb4-bb49-9f3b2c25b3de": {
+      "id": "99176188-1108-4eb4-bb49-9f3b2c25b3de",
+      "name": "create cart",
+      "method": "POST",
+      "url": "{{baseUrl}}/carts",
+      "headers": [],
+      "params": [],
+      "auth": {
+        "type": "none"
+      },
+      "body": {
+        "mode": "none"
+      },
+      "postRequestScript": "const json = sp.response.json();\n\nsp.variables.set(\"cartId\", String(json.id));"
+    },
+    "840ae862-a764-43de-b6d2-669a8b05437a": {
+      "id": "840ae862-a764-43de-b6d2-669a8b05437a",
+      "name": "add to cart",
+      "method": "POST",
+      "url": "{{baseUrl}}/carts/{{cartId}}",
+      "headers": [],
+      "params": [],
+      "auth": {
+        "type": "none"
+      },
+      "body": {
+        "mode": "json",
+        "json": "{\n  \"product_id\": \"{{productId}}\",\n  \"quantity\": 1\n}"
+      }
+    },
+    "4dfcbec6-cd6a-4d36-8369-802abf8e0472": {
+      "id": "4dfcbec6-cd6a-4d36-8369-802abf8e0472",
+      "name": "New Request",
+      "method": "POST",
+      "url": "{{baseUrl}}/invoices",
+      "headers": [],
+      "params": [],
+      "auth": {
+        "type": "bearer",
+        "token": "{{access_token}}"
+      },
+      "body": {
+        "mode": "json",
+        "json": "{\n  \"billing_street\": \"Verboomring\",\n  \"billing_city\": \"Hulsel\",\n  \"billing_state\": \"Noord-Holland\",\n  \"billing_country\": \"NL\",\n  \"billing_postal_code\": \"3453nt\",\n  \"payment_method\": \"cash-on-delivery\",\n  \"cart_id\": \"{{cartId}}\",\n  \"payment_details\": {}\n}"
+      },
+      "postRequestScript": "const json = sp.response.json();\n\nsp.test('invoice_number exists', function() {\n  sp.expect(json.invoice_number).to.not.be.oneOf([null, undefined]);\n});\n\nsp.test('user_id equals \"{{userId}}\"', function() {\n  sp.expect(json.user_id).to.equal(\"{{userId}}\");\n});"
+    }
+  },
+  "collectionVariables": {
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5wcmFjdGljZXNvZnR3YXJldGVzdGluZy5jb20vdXNlcnMvbG9naW4iLCJpYXQiOjE3OTAzMjQ1NzUsImV4cCI6MTc5MDMyNDg3NSwibmJmIjoxNzkwMzI0NTc1LCJqdGkiOiJaZTZxSGRpUnlVTjNYZ2pJIiwic3ViIjoiMDFNM0JTOFBTNTU2S0pDWUZIWEgwNU5YRjQiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3Iiwicm9sZSI6InVzZXIifQ.3gs91uJqpGymRkXHdLMhdLcDb6MfW1x1WLeyPvFEhKY",
+    "id": "01M3BNTWEC5970743PCEWWMYQR",
+    "cartId": "01m3bsprdpj1zfnp3bftv39pr5"
+  }
+}

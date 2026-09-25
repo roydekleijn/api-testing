@@ -1,0 +1,91 @@
+{
+  "version": "1.0",
+  "id": "c6e9ca85-6101-410b-9488-29e73d2bb9c1",
+  "name": "data from folder",
+  "description": "",
+  "rootFolder": {
+    "id": "9c52dd89-1d74-410b-81d9-e95b9d5834bc",
+    "name": "root",
+    "description": "",
+    "folders": [
+      {
+        "id": "d1da2755-24dc-4ead-aaeb-4e221af5ab4b",
+        "name": "New Folder",
+        "description": "",
+        "folders": [],
+        "requestIds": [
+          "ca2dc1d2-df27-4a41-8c07-dc203345d93c"
+        ],
+        "auth": {
+          "type": "none"
+        },
+        "headers": [],
+        "variables": {},
+        "dataSet": {
+          "columns": [
+            "email",
+            "password"
+          ],
+          "rows": [
+            [
+              "customer@practicesoftwaretesting.com",
+              "welcome01"
+            ],
+            [
+              "admin@practicesoftwaretesting.com",
+              "welcome01"
+            ]
+          ]
+        }
+      }
+    ],
+    "requestIds": [
+      "35c4cfa5-3372-45ac-894d-3e2d84972461"
+    ],
+    "childOrder": [
+      {
+        "type": "request",
+        "id": "35c4cfa5-3372-45ac-894d-3e2d84972461"
+      },
+      {
+        "type": "folder",
+        "id": "d1da2755-24dc-4ead-aaeb-4e221af5ab4b"
+      }
+    ]
+  },
+  "requests": {
+    "ca2dc1d2-df27-4a41-8c07-dc203345d93c": {
+      "id": "ca2dc1d2-df27-4a41-8c07-dc203345d93c",
+      "name": "login (copy)",
+      "method": "POST",
+      "url": "https://api.practicesoftwaretesting.com/users/login",
+      "headers": [],
+      "params": [],
+      "auth": {
+        "type": "none"
+      },
+      "body": {
+        "mode": "json",
+        "json": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}"
+      }
+    },
+    "35c4cfa5-3372-45ac-894d-3e2d84972461": {
+      "id": "35c4cfa5-3372-45ac-894d-3e2d84972461",
+      "name": "New Request",
+      "method": "GET",
+      "url": "https://api.practicesoftwaretesting.com/status",
+      "headers": [],
+      "params": [],
+      "auth": {
+        "type": "none"
+      },
+      "body": {
+        "mode": "none"
+      }
+    }
+  },
+  "collectionVariables": {
+    "email": "customer@practicesoftwaretesting.com",
+    "password": "welcome01"
+  }
+}

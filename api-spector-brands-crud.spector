@@ -1,0 +1,31 @@
+{
+  "version": "1.0",
+  "collections": [
+    "collections/crud-brands.spector",
+    "collections/toolshop-api.spector",
+    "collections/data.spector",
+    "collections/data-from-folder.spector",
+    "collections/order.spector"
+  ],
+  "environments": [
+    "environments/test.env.json"
+  ],
+  "activeEnvironmentId": null,
+  "settings": {
+    "tls": {
+      "rejectUnauthorized": true
+    },
+    "piiMaskPatterns": [
+      "authorization",
+      "password",
+      "secret",
+      "api-key",
+      "x-api-key"
+    ],
+    "theme": "light",
+    "zoom": 1.5
+  },
+  "mocks": [
+    "mocks/86d5a908-57c8-4b91-aa65-c551f48ec712.mock.json"
+  ]
+}
